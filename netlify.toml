@@ -1,6 +1,6 @@
 [build]
   command = "npm install --legacy-peer-deps && npm run build"
-  publish = "build"  # or "build" for create-react-app; adjust to your project setup
+  publish = "build"  # use "dist" if you’re using Vite
 
 [build.environment]
   NODE_VERSION = "18.20.8"
