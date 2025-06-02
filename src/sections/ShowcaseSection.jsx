@@ -17,25 +17,32 @@ const ShowcaseSection = () => {
       project2Ref.current,
       project3Ref.current,
     ];
-    projects.forEach((card, index) => {
+
+    const animations = projects.map((card) =>
       gsap.fromTo(
         card,
-        {
-          y: 50,
-          opacity: 0,
-        },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 1,
-          delay: 0.3 * (index + 1),
           scrollTrigger: {
             trigger: card,
             start: "top bottom-=100",
+            toggleActions: "play none none reverse",
           },
         }
-      );
-    });
+      )
+    );
+
+    // Cleanup function to kill ScrollTriggers when component unmounts
+    return () => {
+      animations.forEach((anim) => {
+        if (anim.scrollTrigger) {
+          anim.scrollTrigger.kill();
+        }
+      });
+    };
   }, []);
 
   return (
@@ -53,8 +60,8 @@ const ShowcaseSection = () => {
                 called Ryde
               </h2>
               <p className="text-white-50 md:text-md">
-                An app built with React NAtive, Expo & TAilwind for a fast,
-                user-friendly experiance
+                An app built with React Native, Expo & Tailwind for a fast,
+                user-friendly experience
               </p>
             </div>
           </div>
