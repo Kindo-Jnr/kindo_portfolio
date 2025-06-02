@@ -21,7 +21,7 @@ const HeroExperience = () => {
                 maxPolarAngle={Math.PI / 2}
             />
             <HeroLights/>
-            <Particles count={100}/>
+            <Particles count={200}/>
             <group
                 scale={isMobile ? 0.6 : 1}
                 rotation={[0, -Math.PI / 4, 0]}
